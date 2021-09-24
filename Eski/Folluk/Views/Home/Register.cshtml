@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Çiftlik Oluştur | Folluk.net";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="page-head">
+    <div class="container">
+        <div class="page-title">
+            <h1>Kaydol <small>çiftliğini oluştur, hayvanlarını kaydet. her yerden izle.</small></h1>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="portlet light">
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row margin-bottom-20">
+                                    <div class="col-md-12">
+                                        <div class="space20">
+                                        </div>
+                                        <form action="/Home/Register" method="post">
+                                            <h3 class="form-section">Kaydol</h3>
+                                            <div class="form-group">
+                                                <div class="input-icon">
+                                                    <i class="fa fa-check"></i>
+                                                    <input type="text" class="form-control" name="Fullname" placeholder="Adın Soyadın">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-icon">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <input type="text" class="form-control" name="Email" placeholder="Eposta Adresin">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn green btn-lg pull-right">Hesap Oluştur</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="portlet light">
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row margin-bottom-20">
+                                    <div class="col-md-12">
+                                        <h3>
+                                            Zaten hesabın var mı?
+                                        </h3>
+                                        <div>
+                                            Hesabına hemen giriş yap ve hayvanlarını yönetmeye başla.
+                                        </div>
+                                        <br />
+                                        <a href="/Account" class="btn btn-danger btn-lg pull-right">
+                                            Hesabına giriş yap <i class="icon-user"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

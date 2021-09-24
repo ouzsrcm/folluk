@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Yeni bir kümes oluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light ">
+            <div class="portlet-body">
+                
+                <a href="/Coop" class="btn btn-danger" title="Kümesler">
+                    <i class="icon-folder-alt"></i>
+                    Kümesler
+                </a>
+
+                <hr />
+
+                <form action="/Coop/Save" class="horizontal-form" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>Kümesin için bir isim gir</label>
+                                    <input type="text" class="form-control" name="Title" id="Title">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kümesini tanıt</label>
+                                    <textarea class="form-control" name="Description" id="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

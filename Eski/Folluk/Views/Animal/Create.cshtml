@@ -1,0 +1,85 @@
+﻿@model Folluk.Data.tblFarm
+@{
+    ViewBag.Title = "Yeni bir hayvan oluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light ">
+            <div class="portlet-body">
+                
+                <a href="/Animal" class="btn btn-danger" title="Hayvanlar">
+                    <i class="icon-folder-alt"></i>
+                    Hayvanlar
+                </a>
+
+                <hr />
+
+                <form action="/Animal/Save" class="horizontal-form" method="post">
+                    <input type="hidden" name="AnimalId" id="AnimalId" value="@Model.tblAnimal.AnimalId" />
+                    <input type="hidden" id="FarmId" name="FarmId" value="@Model.FarmId" />
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>Irk seçimi</label>
+                                    <select class="form-control" id="AnimalTypeId" name="AnimalTypeId">
+                                        @Html.Raw(ViewBag.AnimalTypes)
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kümes seçimi</label>
+                                    <select class="form-control" id="CoopId" name="CoopId">
+                                        @Html.Raw(ViewBag.Coops)
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bir isim gir</label>
+                                    <input type="text" name="Title" id="Title" value="@Model.tblAnimal.Title" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Adet</label>
+                                    <input type="text" name="Quantity" id="Quantity" value="@Model.tblAnimal.Quantity" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Yükleme tarihi</label>
+                                    <input type="text" name="CreationDate" id="CreationDate" value="@Model.tblAnimal.CreationDate" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Çıkıma alma tarihi</label>
+                                    <input type="text" name="PublishDate" id="PublishDate" value="@Model.tblAnimal.PublishDate" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Çıkım tarihi</label>
+                                    <input type="text" name="DeployDate" id="DeployDate" value="@Model.tblAnimal.DeployDate" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

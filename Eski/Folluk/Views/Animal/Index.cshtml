@@ -1,0 +1,65 @@
+﻿@model Folluk.Data.tblFarm
+@{
+    ViewBag.Title = "Hayvanlarım";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light ">
+            <div class="portlet-body">
+                
+                <a href="/Animal/Create" class="btn btn-danger" title="Hayvan Ekle">
+                    <i class="icon-plus"></i>
+                    Hayvan Ekle
+                </a>
+
+                <hr />
+
+                @if (Model.IsWarning)
+                {
+                    <div class="note @Model.WarningClass">
+                        @Model.WarningBody
+                    </div>
+                }
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Irk</th>
+                            <th>Kümes</th>
+                            <th>Hayvan adı</th>
+                            <th>Adet</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tblAnimals)
+                        {
+                            <tr>
+                                <td>@item.AnimalId</td>
+                                <td>@item.tblAnimalType.Title</td>
+                                <td>@item.tblCoop.Title</td>
+                                <td>@item.Title</td>
+                                <td>@item.Quantity</td>
+                                <td>
+                                    <div class="btn-group btn-group-solid">
+                                        <a href="/Animal/Remove/@item.AnimalId" class="btn blue btn-sm" title="kaldır">
+                                            <i class="icon-close"></i>
+                                        </a>
+                                        <a href="/Animal/Edit/@item.AnimalId" class="btn blue btn-sm" title="düzenle">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

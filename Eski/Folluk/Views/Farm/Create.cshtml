@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Yeni bir çiftlik oluştur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="portlet light">
+
+            <div class="portlet-body">
+                <form action="/Farm/Save" class="horizontal-form" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>Çiftliğin için isim gir</label>
+                                    <input type="text" class="form-control" name="Title" id="Title">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bir resim seç</label>
+                                    <input type="file" name="ProfileImage" id="ProfileImage" />
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Çiftliğini tanıt</label>
+                                    <textarea class="form-control" name="Description" id="Description"></textarea>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                    <div class="form-actions right">
+                        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

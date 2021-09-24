@@ -1,0 +1,61 @@
+﻿@model Folluk.Data.tblFarm
+@{
+    ViewBag.Title = "Kümes Hayvanları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light ">
+            <div class="portlet-body">
+                
+                <a href="/Coop" class="btn btn-danger" title="Kümesler">
+                    <i class="icon-folder-alt"></i>
+                    Kümesler
+                </a>
+
+                <a class="btn btn-danger" href="/Animal/Create/" title="Hayvan ekle">
+                    <i class="icon-plus"></i>
+                    Hayvan Ekle
+                </a>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kümes</th>
+                            <th>Irk</th>
+                            <th>Hayvan Adı</th>
+                            <th>Adet</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tblAnimals)
+                        {
+                            <tr>
+                                <td>@item.AnimalId</td>
+                                <td>@item.tblCoop.Title</td>
+                                <td>@item.tblAnimalType.Title</td>
+                                <td>@item.Title</td>
+                                <td>@item.Quantity</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="/Animal/Remove/@item.AnimalId" class="btn btn-primary btn-sm" title="kaldır">
+                                            <i class="icon-close"></i>
+                                        </a>
+                                        <a href="/Animal/Edit/@item.CoopId" class="btn btn-primary btn-sm" title="düzenle">
+                                            <i class="icon-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

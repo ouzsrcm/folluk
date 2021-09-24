@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FollukModelStoreContainer" CdmEntityContainer="FollukEntities">
+    <EntitySetMapping Name="Hayvans">
+      <EntityTypeMapping TypeName="FollukModel.Hayvan">
+        <MappingFragment StoreEntitySet="Hayvan">
+          <ScalarProperty Name="isPublished" ColumnName="isPublished" />
+          <ScalarProperty Name="FinallyDate" ColumnName="FinallyDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IrkId" ColumnName="IrkId" />
+          <ScalarProperty Name="HayvanId" ColumnName="HayvanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Irks">
+      <EntityTypeMapping TypeName="FollukModel.Irk">
+        <MappingFragment StoreEntitySet="Irk">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="History" ColumnName="History" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ParentIrkId" ColumnName="ParentIrkId" />
+          <ScalarProperty Name="IrkId" ColumnName="IrkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IrkImages">
+      <EntityTypeMapping TypeName="FollukModel.IrkImage">
+        <MappingFragment StoreEntitySet="IrkImage">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IrkId" ColumnName="IrkId" />
+          <ScalarProperty Name="IrkImageId" ColumnName="IrkImageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FollukModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAddresses">
+      <EntityTypeMapping TypeName="FollukModel.UserAddress">
+        <MappingFragment StoreEntitySet="UserAddress">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserAddressId" ColumnName="UserAddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCredentials">
+      <EntityTypeMapping TypeName="FollukModel.UserCredential">
+        <MappingFragment StoreEntitySet="UserCredential">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserCredentialId" ColumnName="UserCredentialId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorums">
+      <EntityTypeMapping TypeName="FollukModel.Yorum">
+        <MappingFragment StoreEntitySet="Yorum">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IrkId" ColumnName="IrkId" />
+          <ScalarProperty Name="YorumId" ColumnName="YorumId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

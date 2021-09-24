@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2d3e60353de43e693cf6b9443f8e8eb" Name="Diagram1">
+        <EntityTypeShape EntityType="dbFollukModel.tblAccount" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblAccountCredential" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblAnimal" Width="1.5" PointX="14.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblAnimalType" Width="1.5" PointX="12" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblArticle" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblCity" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblConversation" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblConversationReply" Width="1.5" PointX="12" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblCoop" Width="1.5" PointX="12" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblCoopAnimal" Width="1.5" PointX="16.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblCountry" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblDistrict" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblFarm" Width="1.5" PointX="9.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblMedicine" Width="1.5" PointX="14.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblMedicineAnimal" Width="1.5" PointX="16.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbFollukModel.tblNest" Width="1.5" PointX="19.5" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="dbFollukModel.FK_tblAccount_tblDistrict" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblAccountCredential_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblArticle_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblConversation_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblConversationReply_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblFarm_tblAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblAnimal_tblAnimalType" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblAnimal_tblCoop" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblAnimal_tblFarm" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblCoopAnimal_tblAnimal" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblMedicineAnimal_tblAnimal" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblNest_tblAnimal" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblCity_tblCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblDistrict_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblConversationReply_tblConversation" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblCoop_tblFarm" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblCoopAnimal_tblCoop" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblNest_tblCoop" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblMedicineAnimal_tblFarm" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblNest_tblFarm" ManuallyRouted="false" />
+        <AssociationConnector Association="dbFollukModel.FK_tblMedicineAnimal_tblMedicine" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,67 @@
+﻿@model Folluk.Data.tblFarm
+@{
+    ViewBag.Title = "Kümesler";
+    ViewBag.Description = "çiftlik yönetimi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light ">
+            <div class="portlet-body">
+
+                <a href="/Coop/Create" class="btn btn-danger" title="Yei ekle">
+                    <i class="icon-plus"></i>
+                    Yeni ekle
+                </a>
+
+                <hr />
+
+                @if (Model.IsWarning)
+                {
+                    <div class="note @Model.WarningClass">
+                        @Model.WarningBody
+                    </div>
+                }
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Başlık</th>
+                            <th>Açıklamalar</th>
+                            <th>Hayvan Sayısı</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.tblCoops)
+                        {
+                            <tr>
+                                <td>@item.CoopId</td>
+                                <td>@item.Title</td>
+                                <td>@item.Description</td>
+                                <td>@item.tblAnimals.Count</td>
+                                <td>
+                                    <div class="btn-group btn-group-solid">
+                                        <a href="/Coop/Remove/@item.CoopId" class="btn blue btn-sm" title="kaldır">
+                                            <i class="icon-close"></i>
+                                        </a>
+                                        <a href="/Coop/Edit/@item.CoopId" class="btn blue btn-sm" title="düzenle">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                        <a href="/Coop/Animal/@item.CoopId" class="btn blue btn-sm" title="hayvanlar">
+                                            <i class="icon-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

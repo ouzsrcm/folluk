@@ -1,0 +1,1291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbFollukModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fullname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gsm1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Gsm2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="FacebookAccount" Type="nvarchar" MaxLength="300" />
+          <Property Name="ProfilePicture" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblAccountCredential">
+          <Key>
+            <PropertyRef Name="AccountCredentialId" />
+          </Key>
+          <Property Name="AccountCredentialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblAnimal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalTypeId" Type="int" />
+          <Property Name="FarmId" Type="int" />
+          <Property Name="CoopId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="DeployDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblAnimalType">
+          <Key>
+            <PropertyRef Name="AnimalTypeId" />
+          </Key>
+          <Property Name="AnimalTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentAnimalTypeId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblArticle">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PublishDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblConversation">
+          <Key>
+            <PropertyRef Name="ConversationId" />
+          </Key>
+          <Property Name="ConversationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="MessageBody" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblConversationReply">
+          <Key>
+            <PropertyRef Name="ConversationReplyId" />
+          </Key>
+          <Property Name="ConversationReplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConversationId" Type="int" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="MessageBody" Type="nvarchar(max)" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="IsRead" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCoop">
+          <Key>
+            <PropertyRef Name="CoopId" />
+          </Key>
+          <Property Name="CoopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FarmId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblCoopAnimal">
+          <Key>
+            <PropertyRef Name="CoopAnimalId" />
+          </Key>
+          <Property Name="CoopAnimalId" Type="int" Nullable="false" />
+          <Property Name="CoopId" Type="int" />
+          <Property Name="AnimalId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblFarm">
+          <Key>
+            <PropertyRef Name="FarmId" />
+          </Key>
+          <Property Name="FarmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CoverImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProfileImage" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblMedicine">
+          <Key>
+            <PropertyRef Name="MedicineId" />
+          </Key>
+          <Property Name="MedicineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblMedicineAnimal">
+          <Key>
+            <PropertyRef Name="MedicineAnimalId" />
+          </Key>
+          <Property Name="MedicineAnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FarmId" Type="int" />
+          <Property Name="AnimalId" Type="int" />
+          <Property Name="MedicineId" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblNest">
+          <Key>
+            <PropertyRef Name="NestId" />
+          </Key>
+          <Property Name="NestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FarmId" Type="int" />
+          <Property Name="CoopId" Type="int" />
+          <Property Name="AnimalId" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="DeployDate" Type="datetime" />
+          <Property Name="StartQuantity" Type="int" />
+          <Property Name="ResultQuantity" Type="int" />
+          <Property Name="ResultRate" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_tblAccount_tblDistrict">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="0..1" />
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="tblAccount">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccountCredential_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblAccountCredential" Type="Self.tblAccountCredential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblAccountCredential">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblAnimalType">
+          <End Role="tblAnimalType" Type="Self.tblAnimalType" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimalType">
+              <PropertyRef Name="AnimalTypeId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="AnimalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblArticle_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblArticle" Type="Self.tblArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblArticle">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversation_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblConversation" Type="Self.tblConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblConversation">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversationReply_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblConversationReply" Type="Self.tblConversationReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblConversationReply">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversationReply_tblConversation">
+          <End Role="tblConversation" Type="Self.tblConversation" Multiplicity="0..1" />
+          <End Role="tblConversationReply" Type="Self.tblConversationReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConversation">
+              <PropertyRef Name="ConversationId" />
+            </Principal>
+            <Dependent Role="tblConversationReply">
+              <PropertyRef Name="ConversationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoop_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblCoop">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoopAnimal_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblCoopAnimal" Type="Self.tblCoopAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblCoopAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoopAnimal_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblCoopAnimal" Type="Self.tblCoopAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblCoopAnimal">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDistrict_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="0..1" />
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblDistrict">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFarm_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblFarm">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblMedicine">
+          <End Role="tblMedicine" Type="Self.tblMedicine" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMedicine">
+              <PropertyRef Name="MedicineId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="MedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFollukModelStoreContainer">
+          <EntitySet Name="tblAccount" EntityType="Self.tblAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccountCredential" EntityType="Self.tblAccountCredential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAnimal" EntityType="Self.tblAnimal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAnimalType" EntityType="Self.tblAnimalType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArticle" EntityType="Self.tblArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConversation" EntityType="Self.tblConversation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConversationReply" EntityType="Self.tblConversationReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCoop" EntityType="Self.tblCoop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCoopAnimal" EntityType="Self.tblCoopAnimal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFarm" EntityType="Self.tblFarm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedicine" EntityType="Self.tblMedicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedicineAnimal" EntityType="Self.tblMedicineAnimal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNest" EntityType="Self.tblNest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAccount_tblDistrict" Association="Self.FK_tblAccount_tblDistrict">
+            <End Role="tblDistrict" EntitySet="tblDistrict" />
+            <End Role="tblAccount" EntitySet="tblAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccountCredential_tblAccount" Association="Self.FK_tblAccountCredential_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblAccountCredential" EntitySet="tblAccountCredential" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblAnimalType" Association="Self.FK_tblAnimal_tblAnimalType">
+            <End Role="tblAnimalType" EntitySet="tblAnimalType" />
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblCoop" Association="Self.FK_tblAnimal_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoop" />
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblFarm" Association="Self.FK_tblAnimal_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarm" />
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblArticle_tblAccount" Association="Self.FK_tblArticle_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblArticle" EntitySet="tblArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountry" />
+            <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversation_tblAccount" Association="Self.FK_tblConversation_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblConversation" EntitySet="tblConversation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversationReply_tblAccount" Association="Self.FK_tblConversationReply_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblConversationReply" EntitySet="tblConversationReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversationReply_tblConversation" Association="Self.FK_tblConversationReply_tblConversation">
+            <End Role="tblConversation" EntitySet="tblConversation" />
+            <End Role="tblConversationReply" EntitySet="tblConversationReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoop_tblFarm" Association="Self.FK_tblCoop_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarm" />
+            <End Role="tblCoop" EntitySet="tblCoop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoopAnimal_tblAnimal" Association="Self.FK_tblCoopAnimal_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+            <End Role="tblCoopAnimal" EntitySet="tblCoopAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoopAnimal_tblCoop" Association="Self.FK_tblCoopAnimal_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoop" />
+            <End Role="tblCoopAnimal" EntitySet="tblCoopAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDistrict_tblCity" Association="Self.FK_tblDistrict_tblCity">
+            <End Role="tblCity" EntitySet="tblCity" />
+            <End Role="tblDistrict" EntitySet="tblDistrict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFarm_tblAccount" Association="Self.FK_tblFarm_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccount" />
+            <End Role="tblFarm" EntitySet="tblFarm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblAnimal" Association="Self.FK_tblMedicineAnimal_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblFarm" Association="Self.FK_tblMedicineAnimal_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarm" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblMedicine" Association="Self.FK_tblMedicineAnimal_tblMedicine">
+            <End Role="tblMedicine" EntitySet="tblMedicine" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblAnimal" Association="Self.FK_tblNest_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimal" />
+            <End Role="tblNest" EntitySet="tblNest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblCoop" Association="Self.FK_tblNest_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoop" />
+            <End Role="tblNest" EntitySet="tblNest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblFarm" Association="Self.FK_tblNest_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarm" />
+            <End Role="tblNest" EntitySet="tblNest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFollukModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gsm1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Gsm2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="FacebookAccount" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblDistrict" Relationship="Self.FK_tblAccount_tblDistrict" FromRole="tblAccount" ToRole="tblDistrict" />
+          <NavigationProperty Name="tblAccountCredentials" Relationship="Self.FK_tblAccountCredential_tblAccount" FromRole="tblAccount" ToRole="tblAccountCredential" />
+          <NavigationProperty Name="tblArticles" Relationship="Self.FK_tblArticle_tblAccount" FromRole="tblAccount" ToRole="tblArticle" />
+          <NavigationProperty Name="tblConversations" Relationship="Self.FK_tblConversation_tblAccount" FromRole="tblAccount" ToRole="tblConversation" />
+          <NavigationProperty Name="tblConversationReplies" Relationship="Self.FK_tblConversationReply_tblAccount" FromRole="tblAccount" ToRole="tblConversationReply" />
+          <NavigationProperty Name="tblFarms" Relationship="Self.FK_tblFarm_tblAccount" FromRole="tblAccount" ToRole="tblFarm" />
+        </EntityType>
+        <EntityType Name="tblAccountCredential">
+          <Key>
+            <PropertyRef Name="AccountCredentialId" />
+          </Key>
+          <Property Name="AccountCredentialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblAccountCredential_tblAccount" FromRole="tblAccountCredential" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblAnimal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalTypeId" Type="Int32" />
+          <Property Name="FarmId" Type="Int32" />
+          <Property Name="CoopId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="DeployDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAnimalType" Relationship="Self.FK_tblAnimal_tblAnimalType" FromRole="tblAnimal" ToRole="tblAnimalType" />
+          <NavigationProperty Name="tblCoop" Relationship="Self.FK_tblAnimal_tblCoop" FromRole="tblAnimal" ToRole="tblCoop" />
+          <NavigationProperty Name="tblFarm" Relationship="Self.FK_tblAnimal_tblFarm" FromRole="tblAnimal" ToRole="tblFarm" />
+          <NavigationProperty Name="tblCoopAnimals" Relationship="Self.FK_tblCoopAnimal_tblAnimal" FromRole="tblAnimal" ToRole="tblCoopAnimal" />
+          <NavigationProperty Name="tblMedicineAnimals" Relationship="Self.FK_tblMedicineAnimal_tblAnimal" FromRole="tblAnimal" ToRole="tblMedicineAnimal" />
+          <NavigationProperty Name="tblNests" Relationship="Self.FK_tblNest_tblAnimal" FromRole="tblAnimal" ToRole="tblNest" />
+        </EntityType>
+        <EntityType Name="tblAnimalType">
+          <Key>
+            <PropertyRef Name="AnimalTypeId" />
+          </Key>
+          <Property Name="AnimalTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentAnimalTypeId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAnimals" Relationship="Self.FK_tblAnimal_tblAnimalType" FromRole="tblAnimalType" ToRole="tblAnimal" />
+        </EntityType>
+        <EntityType Name="tblArticle">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblArticle_tblAccount" FromRole="tblArticle" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCountry" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCity" ToRole="tblCountry" />
+          <NavigationProperty Name="tblDistricts" Relationship="Self.FK_tblDistrict_tblCity" FromRole="tblCity" ToRole="tblDistrict" />
+        </EntityType>
+        <EntityType Name="tblConversation">
+          <Key>
+            <PropertyRef Name="ConversationId" />
+          </Key>
+          <Property Name="ConversationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblConversation_tblAccount" FromRole="tblConversation" ToRole="tblAccount" />
+          <NavigationProperty Name="tblConversationReplies" Relationship="Self.FK_tblConversationReply_tblConversation" FromRole="tblConversation" ToRole="tblConversationReply" />
+        </EntityType>
+        <EntityType Name="tblConversationReply">
+          <Key>
+            <PropertyRef Name="ConversationReplyId" />
+          </Key>
+          <Property Name="ConversationReplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConversationId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRead" Type="Boolean" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblConversationReply_tblAccount" FromRole="tblConversationReply" ToRole="tblAccount" />
+          <NavigationProperty Name="tblConversation" Relationship="Self.FK_tblConversationReply_tblConversation" FromRole="tblConversationReply" ToRole="tblConversation" />
+        </EntityType>
+        <EntityType Name="tblCoop">
+          <Key>
+            <PropertyRef Name="CoopId" />
+          </Key>
+          <Property Name="CoopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FarmId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAnimals" Relationship="Self.FK_tblAnimal_tblCoop" FromRole="tblCoop" ToRole="tblAnimal" />
+          <NavigationProperty Name="tblFarm" Relationship="Self.FK_tblCoop_tblFarm" FromRole="tblCoop" ToRole="tblFarm" />
+          <NavigationProperty Name="tblCoopAnimals" Relationship="Self.FK_tblCoopAnimal_tblCoop" FromRole="tblCoop" ToRole="tblCoopAnimal" />
+          <NavigationProperty Name="tblNests" Relationship="Self.FK_tblNest_tblCoop" FromRole="tblCoop" ToRole="tblNest" />
+        </EntityType>
+        <EntityType Name="tblCoopAnimal">
+          <Key>
+            <PropertyRef Name="CoopAnimalId" />
+          </Key>
+          <Property Name="CoopAnimalId" Type="Int32" Nullable="false" />
+          <Property Name="CoopId" Type="Int32" />
+          <Property Name="AnimalId" Type="Int32" />
+          <NavigationProperty Name="tblAnimal" Relationship="Self.FK_tblCoopAnimal_tblAnimal" FromRole="tblCoopAnimal" ToRole="tblAnimal" />
+          <NavigationProperty Name="tblCoop" Relationship="Self.FK_tblCoopAnimal_tblCoop" FromRole="tblCoopAnimal" ToRole="tblCoop" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCities" Relationship="Self.FK_tblCity_tblCountry" FromRole="tblCountry" ToRole="tblCity" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAccounts" Relationship="Self.FK_tblAccount_tblDistrict" FromRole="tblDistrict" ToRole="tblAccount" />
+          <NavigationProperty Name="tblCity" Relationship="Self.FK_tblDistrict_tblCity" FromRole="tblDistrict" ToRole="tblCity" />
+        </EntityType>
+        <EntityType Name="tblFarm">
+          <Key>
+            <PropertyRef Name="FarmId" />
+          </Key>
+          <Property Name="FarmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CoverImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAccount" Relationship="Self.FK_tblFarm_tblAccount" FromRole="tblFarm" ToRole="tblAccount" />
+          <NavigationProperty Name="tblAnimals" Relationship="Self.FK_tblAnimal_tblFarm" FromRole="tblFarm" ToRole="tblAnimal" />
+          <NavigationProperty Name="tblCoops" Relationship="Self.FK_tblCoop_tblFarm" FromRole="tblFarm" ToRole="tblCoop" />
+          <NavigationProperty Name="tblMedicineAnimals" Relationship="Self.FK_tblMedicineAnimal_tblFarm" FromRole="tblFarm" ToRole="tblMedicineAnimal" />
+          <NavigationProperty Name="tblNests" Relationship="Self.FK_tblNest_tblFarm" FromRole="tblFarm" ToRole="tblNest" />
+        </EntityType>
+        <EntityType Name="tblMedicine">
+          <Key>
+            <PropertyRef Name="MedicineId" />
+          </Key>
+          <Property Name="MedicineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblMedicineAnimals" Relationship="Self.FK_tblMedicineAnimal_tblMedicine" FromRole="tblMedicine" ToRole="tblMedicineAnimal" />
+        </EntityType>
+        <EntityType Name="tblMedicineAnimal">
+          <Key>
+            <PropertyRef Name="MedicineAnimalId" />
+          </Key>
+          <Property Name="MedicineAnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FarmId" Type="Int32" />
+          <Property Name="AnimalId" Type="Int32" />
+          <Property Name="MedicineId" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAnimal" Relationship="Self.FK_tblMedicineAnimal_tblAnimal" FromRole="tblMedicineAnimal" ToRole="tblAnimal" />
+          <NavigationProperty Name="tblFarm" Relationship="Self.FK_tblMedicineAnimal_tblFarm" FromRole="tblMedicineAnimal" ToRole="tblFarm" />
+          <NavigationProperty Name="tblMedicine" Relationship="Self.FK_tblMedicineAnimal_tblMedicine" FromRole="tblMedicineAnimal" ToRole="tblMedicine" />
+        </EntityType>
+        <EntityType Name="tblNest">
+          <Key>
+            <PropertyRef Name="NestId" />
+          </Key>
+          <Property Name="NestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FarmId" Type="Int32" />
+          <Property Name="CoopId" Type="Int32" />
+          <Property Name="AnimalId" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="DeployDate" Type="DateTime" Precision="3" />
+          <Property Name="StartQuantity" Type="Int32" />
+          <Property Name="ResultQuantity" Type="Int32" />
+          <Property Name="ResultRate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAnimal" Relationship="Self.FK_tblNest_tblAnimal" FromRole="tblNest" ToRole="tblAnimal" />
+          <NavigationProperty Name="tblCoop" Relationship="Self.FK_tblNest_tblCoop" FromRole="tblNest" ToRole="tblCoop" />
+          <NavigationProperty Name="tblFarm" Relationship="Self.FK_tblNest_tblFarm" FromRole="tblNest" ToRole="tblFarm" />
+        </EntityType>
+        <Association Name="FK_tblAccount_tblDistrict">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="0..1" />
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="tblAccount">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccountCredential_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblAccountCredential" Type="Self.tblAccountCredential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblAccountCredential">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblArticle_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblArticle" Type="Self.tblArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblArticle">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversation_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblConversation" Type="Self.tblConversation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblConversation">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversationReply_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblConversationReply" Type="Self.tblConversationReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblConversationReply">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblFarm_tblAccount">
+          <End Role="tblAccount" Type="Self.tblAccount" Multiplicity="0..1" />
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="tblFarm">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblAnimalType">
+          <End Role="tblAnimalType" Type="Self.tblAnimalType" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimalType">
+              <PropertyRef Name="AnimalTypeId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="AnimalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAnimal_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblAnimal">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoopAnimal_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblCoopAnimal" Type="Self.tblCoopAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblCoopAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblAnimal">
+          <End Role="tblAnimal" Type="Self.tblAnimal" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAnimal">
+              <PropertyRef Name="AnimalId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="AnimalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCity_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblCity">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDistrict_tblCity">
+          <End Role="tblCity" Type="Self.tblCity" Multiplicity="0..1" />
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCity">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="tblDistrict">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConversationReply_tblConversation">
+          <End Role="tblConversation" Type="Self.tblConversation" Multiplicity="0..1" />
+          <End Role="tblConversationReply" Type="Self.tblConversationReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConversation">
+              <PropertyRef Name="ConversationId" />
+            </Principal>
+            <Dependent Role="tblConversationReply">
+              <PropertyRef Name="ConversationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoop_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblCoop">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCoopAnimal_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblCoopAnimal" Type="Self.tblCoopAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblCoopAnimal">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblCoop">
+          <End Role="tblCoop" Type="Self.tblCoop" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoop">
+              <PropertyRef Name="CoopId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="CoopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblNest_tblFarm">
+          <End Role="tblFarm" Type="Self.tblFarm" Multiplicity="0..1" />
+          <End Role="tblNest" Type="Self.tblNest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFarm">
+              <PropertyRef Name="FarmId" />
+            </Principal>
+            <Dependent Role="tblNest">
+              <PropertyRef Name="FarmId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblMedicineAnimal_tblMedicine">
+          <End Role="tblMedicine" Type="Self.tblMedicine" Multiplicity="0..1" />
+          <End Role="tblMedicineAnimal" Type="Self.tblMedicineAnimal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMedicine">
+              <PropertyRef Name="MedicineId" />
+            </Principal>
+            <Dependent Role="tblMedicineAnimal">
+              <PropertyRef Name="MedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFollukEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAccounts" EntityType="Self.tblAccount" />
+          <EntitySet Name="tblAccountCredentials" EntityType="Self.tblAccountCredential" />
+          <EntitySet Name="tblAnimals" EntityType="Self.tblAnimal" />
+          <EntitySet Name="tblAnimalTypes" EntityType="Self.tblAnimalType" />
+          <EntitySet Name="tblArticles" EntityType="Self.tblArticle" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+          <EntitySet Name="tblConversations" EntityType="Self.tblConversation" />
+          <EntitySet Name="tblConversationReplies" EntityType="Self.tblConversationReply" />
+          <EntitySet Name="tblCoops" EntityType="Self.tblCoop" />
+          <EntitySet Name="tblCoopAnimals" EntityType="Self.tblCoopAnimal" />
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
+          <EntitySet Name="tblDistricts" EntityType="Self.tblDistrict" />
+          <EntitySet Name="tblFarms" EntityType="Self.tblFarm" />
+          <EntitySet Name="tblMedicines" EntityType="Self.tblMedicine" />
+          <EntitySet Name="tblMedicineAnimals" EntityType="Self.tblMedicineAnimal" />
+          <EntitySet Name="tblNests" EntityType="Self.tblNest" />
+          <AssociationSet Name="FK_tblAccount_tblDistrict" Association="Self.FK_tblAccount_tblDistrict">
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccountCredential_tblAccount" Association="Self.FK_tblAccountCredential_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblAccountCredential" EntitySet="tblAccountCredentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblArticle_tblAccount" Association="Self.FK_tblArticle_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblArticle" EntitySet="tblArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversation_tblAccount" Association="Self.FK_tblConversation_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblConversation" EntitySet="tblConversations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversationReply_tblAccount" Association="Self.FK_tblConversationReply_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblConversationReply" EntitySet="tblConversationReplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFarm_tblAccount" Association="Self.FK_tblFarm_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblFarm" EntitySet="tblFarms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblAnimalType" Association="Self.FK_tblAnimal_tblAnimalType">
+            <End Role="tblAnimalType" EntitySet="tblAnimalTypes" />
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblCoop" Association="Self.FK_tblAnimal_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoops" />
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAnimal_tblFarm" Association="Self.FK_tblAnimal_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarms" />
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoopAnimal_tblAnimal" Association="Self.FK_tblCoopAnimal_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+            <End Role="tblCoopAnimal" EntitySet="tblCoopAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblAnimal" Association="Self.FK_tblMedicineAnimal_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblAnimal" Association="Self.FK_tblNest_tblAnimal">
+            <End Role="tblAnimal" EntitySet="tblAnimals" />
+            <End Role="tblNest" EntitySet="tblNests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCity_tblCountry" Association="Self.FK_tblCity_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountries" />
+            <End Role="tblCity" EntitySet="tblCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDistrict_tblCity" Association="Self.FK_tblDistrict_tblCity">
+            <End Role="tblCity" EntitySet="tblCities" />
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConversationReply_tblConversation" Association="Self.FK_tblConversationReply_tblConversation">
+            <End Role="tblConversation" EntitySet="tblConversations" />
+            <End Role="tblConversationReply" EntitySet="tblConversationReplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoop_tblFarm" Association="Self.FK_tblCoop_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarms" />
+            <End Role="tblCoop" EntitySet="tblCoops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCoopAnimal_tblCoop" Association="Self.FK_tblCoopAnimal_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoops" />
+            <End Role="tblCoopAnimal" EntitySet="tblCoopAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblCoop" Association="Self.FK_tblNest_tblCoop">
+            <End Role="tblCoop" EntitySet="tblCoops" />
+            <End Role="tblNest" EntitySet="tblNests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblFarm" Association="Self.FK_tblMedicineAnimal_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarms" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblNest_tblFarm" Association="Self.FK_tblNest_tblFarm">
+            <End Role="tblFarm" EntitySet="tblFarms" />
+            <End Role="tblNest" EntitySet="tblNests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblMedicineAnimal_tblMedicine" Association="Self.FK_tblMedicineAnimal_tblMedicine">
+            <End Role="tblMedicine" EntitySet="tblMedicines" />
+            <End Role="tblMedicineAnimal" EntitySet="tblMedicineAnimals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFollukModelStoreContainer" CdmEntityContainer="dbFollukEntities">
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="dbFollukModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccount">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Gsm1" ColumnName="Gsm1" />
+                <ScalarProperty Name="Gsm2" ColumnName="Gsm2" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="FacebookAccount" ColumnName="FacebookAccount" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccountCredentials">
+            <EntityTypeMapping TypeName="dbFollukModel.tblAccountCredential">
+              <MappingFragment StoreEntitySet="tblAccountCredential">
+                <ScalarProperty Name="AccountCredentialId" ColumnName="AccountCredentialId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnimals">
+            <EntityTypeMapping TypeName="dbFollukModel.tblAnimal">
+              <MappingFragment StoreEntitySet="tblAnimal">
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+                <ScalarProperty Name="FarmId" ColumnName="FarmId" />
+                <ScalarProperty Name="CoopId" ColumnName="CoopId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="DeployDate" ColumnName="DeployDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnimalTypes">
+            <EntityTypeMapping TypeName="dbFollukModel.tblAnimalType">
+              <MappingFragment StoreEntitySet="tblAnimalType">
+                <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+                <ScalarProperty Name="ParentAnimalTypeId" ColumnName="ParentAnimalTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArticles">
+            <EntityTypeMapping TypeName="dbFollukModel.tblArticle">
+              <MappingFragment StoreEntitySet="tblArticle">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="dbFollukModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConversations">
+            <EntityTypeMapping TypeName="dbFollukModel.tblConversation">
+              <MappingFragment StoreEntitySet="tblConversation">
+                <ScalarProperty Name="ConversationId" ColumnName="ConversationId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConversationReplies">
+            <EntityTypeMapping TypeName="dbFollukModel.tblConversationReply">
+              <MappingFragment StoreEntitySet="tblConversationReply">
+                <ScalarProperty Name="ConversationReplyId" ColumnName="ConversationReplyId" />
+                <ScalarProperty Name="ConversationId" ColumnName="ConversationId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCoops">
+            <EntityTypeMapping TypeName="dbFollukModel.tblCoop">
+              <MappingFragment StoreEntitySet="tblCoop">
+                <ScalarProperty Name="CoopId" ColumnName="CoopId" />
+                <ScalarProperty Name="FarmId" ColumnName="FarmId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCoopAnimals">
+            <EntityTypeMapping TypeName="dbFollukModel.tblCoopAnimal">
+              <MappingFragment StoreEntitySet="tblCoopAnimal">
+                <ScalarProperty Name="CoopAnimalId" ColumnName="CoopAnimalId" />
+                <ScalarProperty Name="CoopId" ColumnName="CoopId" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountries">
+            <EntityTypeMapping TypeName="dbFollukModel.tblCountry">
+              <MappingFragment StoreEntitySet="tblCountry">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDistricts">
+            <EntityTypeMapping TypeName="dbFollukModel.tblDistrict">
+              <MappingFragment StoreEntitySet="tblDistrict">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFarms">
+            <EntityTypeMapping TypeName="dbFollukModel.tblFarm">
+              <MappingFragment StoreEntitySet="tblFarm">
+                <ScalarProperty Name="FarmId" ColumnName="FarmId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedicines">
+            <EntityTypeMapping TypeName="dbFollukModel.tblMedicine">
+              <MappingFragment StoreEntitySet="tblMedicine">
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedicineAnimals">
+            <EntityTypeMapping TypeName="dbFollukModel.tblMedicineAnimal">
+              <MappingFragment StoreEntitySet="tblMedicineAnimal">
+                <ScalarProperty Name="MedicineAnimalId" ColumnName="MedicineAnimalId" />
+                <ScalarProperty Name="FarmId" ColumnName="FarmId" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNests">
+            <EntityTypeMapping TypeName="dbFollukModel.tblNest">
+              <MappingFragment StoreEntitySet="tblNest">
+                <ScalarProperty Name="NestId" ColumnName="NestId" />
+                <ScalarProperty Name="FarmId" ColumnName="FarmId" />
+                <ScalarProperty Name="CoopId" ColumnName="CoopId" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="DeployDate" ColumnName="DeployDate" />
+                <ScalarProperty Name="StartQuantity" ColumnName="StartQuantity" />
+                <ScalarProperty Name="ResultQuantity" ColumnName="ResultQuantity" />
+                <ScalarProperty Name="ResultRate" ColumnName="ResultRate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

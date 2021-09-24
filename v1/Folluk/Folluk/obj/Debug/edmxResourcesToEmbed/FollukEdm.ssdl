@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FollukModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Hayvan">
+    <Key>
+      <PropertyRef Name="HayvanId" />
+    </Key>
+    <Property Name="HayvanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IrkId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Details" Type="text" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="FinallyDate" Type="datetime" />
+    <Property Name="isPublished" Type="bit" />
+  </EntityType>
+  <EntityType Name="Irk">
+    <Key>
+      <PropertyRef Name="IrkId" />
+    </Key>
+    <Property Name="IrkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentIrkId" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Image" Type="nvarchar" MaxLength="300" />
+    <Property Name="History" Type="text" />
+    <Property Name="Details" Type="text" />
+  </EntityType>
+  <EntityType Name="IrkImage">
+    <Key>
+      <PropertyRef Name="IrkImageId" />
+    </Key>
+    <Property Name="IrkImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IrkId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="2000" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="Gsm" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserAddress">
+    <Key>
+      <PropertyRef Name="UserAddressId" />
+    </Key>
+    <Property Name="UserAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="DistrictId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsDefault" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserCredential">
+    <Key>
+      <PropertyRef Name="UserCredentialId" />
+    </Key>
+    <Property Name="UserCredentialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="300" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Yorum">
+    <Key>
+      <PropertyRef Name="YorumId" />
+    </Key>
+    <Property Name="YorumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IrkId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Rating" Type="nvarchar" MaxLength="100" />
+    <Property Name="Body" Type="text" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="Ip" Type="nvarchar" MaxLength="30" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Hayvan_Irk">
+    <End Role="Irk" Type="Self.Irk" Multiplicity="0..1" />
+    <End Role="Hayvan" Type="Self.Hayvan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Irk">
+        <PropertyRef Name="IrkId" />
+      </Principal>
+      <Dependent Role="Hayvan">
+        <PropertyRef Name="IrkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hayvan_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Hayvan" Type="Self.Hayvan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Hayvan">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IrkImage_Irk">
+    <End Role="Irk" Type="Self.Irk" Multiplicity="0..1" />
+    <End Role="IrkImage" Type="Self.IrkImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Irk">
+        <PropertyRef Name="IrkId" />
+      </Principal>
+      <Dependent Role="IrkImage">
+        <PropertyRef Name="IrkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IrkImage_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="IrkImage" Type="Self.IrkImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="IrkImage">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAddress_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserAddress" Type="Self.UserAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAddress">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCredential_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserCredential" Type="Self.UserCredential" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserCredential">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_Irk">
+    <End Role="Irk" Type="Self.Irk" Multiplicity="0..1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Irk">
+        <PropertyRef Name="IrkId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="IrkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FollukModelStoreContainer">
+    <EntitySet Name="Hayvan" EntityType="Self.Hayvan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Irk" EntityType="Self.Irk" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IrkImage" EntityType="Self.IrkImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAddress" EntityType="Self.UserAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserCredential" EntityType="Self.UserCredential" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Hayvan_Irk" Association="Self.FK_Hayvan_Irk">
+      <End Role="Irk" EntitySet="Irk" />
+      <End Role="Hayvan" EntitySet="Hayvan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hayvan_User" Association="Self.FK_Hayvan_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Hayvan" EntitySet="Hayvan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IrkImage_Irk" Association="Self.FK_IrkImage_Irk">
+      <End Role="Irk" EntitySet="Irk" />
+      <End Role="IrkImage" EntitySet="IrkImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IrkImage_User" Association="Self.FK_IrkImage_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="IrkImage" EntitySet="IrkImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAddress_User" Association="Self.FK_UserAddress_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAddress" EntitySet="UserAddress" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCredential_User" Association="Self.FK_UserCredential_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserCredential" EntitySet="UserCredential" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_Irk" Association="Self.FK_Yorum_Irk">
+      <End Role="Irk" EntitySet="Irk" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_User" Association="Self.FK_Yorum_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

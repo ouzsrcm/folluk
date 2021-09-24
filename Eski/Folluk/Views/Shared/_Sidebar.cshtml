@@ -1,0 +1,86 @@
+﻿@model Folluk.Data.tblFarm
+<div class="profile-sidebar" style="width: 250px;">
+    <div class="portlet light profile-sidebar-portlet">
+        <div class="profile-userpic">
+            <img src="@Model.ProfileImage" class="img-responsive" alt="" />
+        </div>
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+                @Model.Title
+            </div>
+        </div>
+        <div class="profile-userbuttons">
+            <a href="/Account/Profile" class="btn btn-circle btn-danger btn-sm">
+                @Model.tblAccount.Fullname
+            </a>
+        </div>
+        <div class="profile-usermenu">
+            <ul class="nav">
+                <li class="active">
+                    <a href="/Farm">
+                        <i class="icon-home"></i>
+                        Genel
+                    </a>
+                </li>
+                <li>
+                    <a href="/Coop">
+                        <i class="icon-settings"></i>
+                        Kümesler
+                    </a>
+                </li>
+                <li>
+                    <a href="/Nest">
+                        <i class="icon-check"></i>
+                        Kuluçka
+                    </a>
+                </li>
+                <li>
+                    <a href="/Medicine">
+                        <i class="icon-info"></i>
+                        İlaçlama
+                    </a>
+                </li>
+                <li>
+                    <a href="/Animal">
+                        <i class="icon-grid"></i>
+                        Hayvanlar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="portlet light">
+        <div class="row list-separated profile-stat">
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="uppercase profile-stat-title">
+                    @Model.tblAnimalCount
+                </div>
+                <div class="uppercase profile-stat-text">
+                    Hayvan
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="uppercase profile-stat-title">
+                    @Model.tblNestCount
+                </div>
+                <div class="uppercase profile-stat-text">
+                    Kuluçka
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-6">
+                <div class="uppercase profile-stat-title">
+                    @Model.tblCoopCount
+                </div>
+                <div class="uppercase profile-stat-text">
+                    Kümes
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4 class="profile-desc-title">@Model.Title</h4>
+            <span class="profile-desc-text">
+                @Model.Description
+            </span>
+        </div>
+    </div>
+</div>

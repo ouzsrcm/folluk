@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d721ffdcfec46ba91acb0fb83e92a5c" Name="Diagram1">
+        <EntityTypeShape EntityType="FollukModel.Hayvan" Width="1.5" PointX="6" PointY="4.25" />
+        <EntityTypeShape EntityType="FollukModel.Irk" Width="1.5" PointX="3.75" PointY="2.5" />
+        <EntityTypeShape EntityType="FollukModel.IrkImage" Width="1.5" PointX="6" PointY="8.625" />
+        <EntityTypeShape EntityType="FollukModel.User" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="FollukModel.UserAddress" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="FollukModel.UserCredential" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="FollukModel.Yorum" Width="1.5" PointX="3" PointY="6.5" />
+        <AssociationConnector Association="FollukModel.FK_Hayvan_Irk" />
+        <AssociationConnector Association="FollukModel.FK_Hayvan_User" />
+        <AssociationConnector Association="FollukModel.FK_IrkImage_Irk" />
+        <AssociationConnector Association="FollukModel.FK_Yorum_Irk" />
+        <AssociationConnector Association="FollukModel.FK_IrkImage_User" />
+        <AssociationConnector Association="FollukModel.FK_UserAddress_User" />
+        <AssociationConnector Association="FollukModel.FK_UserCredential_User" />
+        <AssociationConnector Association="FollukModel.FK_Yorum_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
